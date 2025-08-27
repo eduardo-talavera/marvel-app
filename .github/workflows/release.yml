@@ -32,21 +32,21 @@ jobs:
 
       - name: Deploy to Vercel (Dev Preview)
         if: github.ref == 'refs/heads/develop'
-        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=dev
+        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --yes --env ENV=dev
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel (QA Preview)
         if: github.ref == 'refs/heads/qa'
-        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=qa
+        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --yes --env ENV=qa
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel (Production)
         if: github.ref == 'refs/heads/main'
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=prod
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes --env ENV=prod
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
