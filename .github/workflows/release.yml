@@ -27,7 +27,9 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      # 🚀 Despliegue DEV → Preview
+      - name: Run Unit Tests
+        run: npm run test 
+
       - name: Deploy to Vercel (Dev Preview)
         if: github.ref == 'refs/heads/develop'
         run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=dev
@@ -35,7 +37,6 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-      # 🚀 Despliegue QA → Preview
       - name: Deploy to Vercel (QA Preview)
         if: github.ref == 'refs/heads/qa'
         run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=qa
@@ -43,7 +44,6 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-      # 🚀 Despliegue PROD → Producción
       - name: Deploy to Vercel (Production)
         if: github.ref == 'refs/heads/main'
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=prod
