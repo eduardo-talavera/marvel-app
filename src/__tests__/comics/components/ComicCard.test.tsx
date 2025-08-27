@@ -35,7 +35,7 @@ afterEach(() => {
 
 const mockComic: Comic = { 
   id: '123', 
-  title: 'Mock Title',
+  title: 'Mock Comic Title',
   thumbnail: {
     path :'http://example.com/image',
     extension:'jpg'
@@ -54,7 +54,7 @@ const mockComic: Comic = {
 describe('ComicCard', () => {
   it('muestra el título del cómic', () => {
     render(<ComicCard comic={mockComic} />);
-    expect(screen.getByText('Mock Title')).toBeInTheDocument();
+    expect(screen.getByText('Mock Comic Title')).toBeInTheDocument();
   });
 
   it('muestra la imagen con src y alt correctos', () => {

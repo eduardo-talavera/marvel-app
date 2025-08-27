@@ -4,7 +4,7 @@ const config = {
     "^.+\\.(ts|tsx)$": [
       "ts-jest",
       {
-        tsconfig: "tsconfig.json",
+        tsconfig: "tsconfig.jest.json",
         useESM: true, // importante para Next 15 (ESM)
       },
     ],

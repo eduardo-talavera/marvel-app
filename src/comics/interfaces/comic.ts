@@ -21,4 +21,4 @@ export interface ComicCharacter {
   thumbnail: Thumbnail
 }
 
-type Thumbnail = { path: string, extension: string }
+export type Thumbnail = { path: string, extension: string }

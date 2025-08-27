@@ -31,8 +31,8 @@ export const IsFavorite = ({ comic, size, justify = 'start' }: IsFavoriteProps) 
         <div className="text-red-600">
           {
           isFavorite 
-            ? ( <IoHeart size={iconSize}/> ) 
-            : ( <IoHeartOutline size={iconSize} /> )
+            ? ( <IoHeart data-testid="heart-icon" size={iconSize}/> ) 
+            : ( <IoHeartOutline data-testid="heart-icon-outline" size={iconSize} /> )
           }
         </div>
         <div className="pl-3">

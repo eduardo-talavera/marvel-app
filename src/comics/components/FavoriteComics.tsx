@@ -21,7 +21,7 @@ export const FavoriteComics = () => {
 export const NotFavorites = () => {
   return (
     <div className="flex flex-col h-[50vh] items-center justify-center">
-      <IoHeartOutline size={100} className="text-red-500" />
+      <IoHeartOutline size={100} className="text-red-500" data-testid="heart-icon" />
       <span className='text-center md:text-left'>No hay favoritos</span>
     </div>
   )

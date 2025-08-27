@@ -24,7 +24,7 @@ export const Sidebar = () => {
       className="bg-zinc-900 min-h-screen z-10 text-slate-300 w-64 left-0 overflow-y-clip hidden md:block"
     >
       <div id="logo" className="my-4 px-6">
-        <img src="/Marvel-Logo-2000-2012.png" alt="" />
+        <img src="/Marvel-Logo-2000-2012.png" alt="logo" role="img" />
         <p className="text-slate-500 text-md mt-5">
           Administra tus comics
         </p>
