@@ -7,7 +7,7 @@ const menuItems = [
   {
     path: "/dashboard/comics",
     icon: <IoScan size={30}/>,
-    title: "Comics",
+    title: "Cómics",
   },
   {
     path: "/dashboard/favorites",

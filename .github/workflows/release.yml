@@ -1,0 +1,52 @@
+name: Deploy Next.js to Vercel (Multi-env)
+
+on:
+  push:
+    branches:
+      - main
+      - qa
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js
+        run: npm run build
+
+      # 🚀 Despliegue DEV → Preview
+      - name: Deploy to Vercel (Dev Preview)
+        if: github.ref == 'refs/heads/develop'
+        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=dev
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      # 🚀 Despliegue QA → Preview
+      - name: Deploy to Vercel (QA Preview)
+        if: github.ref == 'refs/heads/qa'
+        run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=qa
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      # 🚀 Despliegue PROD → Producción
+      - name: Deploy to Vercel (Production)
+        if: github.ref == 'refs/heads/main'
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --env ENV=prod
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

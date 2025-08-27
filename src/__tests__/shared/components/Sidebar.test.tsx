@@ -26,7 +26,7 @@ describe("Sidebar Component", () => {
     
     const items = screen.getAllByTestId("menu-item");
     expect(items.length).toBe(2); // Comics + Favoritos
-    expect(items[0]).toHaveTextContent("Comics");
+    expect(items[0]).toHaveTextContent("Cómics");
     expect(items[1]).toHaveTextContent("Favoritos");
   });
 });
